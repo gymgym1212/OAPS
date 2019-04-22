@@ -1,0 +1,70 @@
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>article details</title>
+</head>
+<body>
+<a href="/"><h3>Free Paper</h3></a>
+<h1>The article details</h1>
+    <!-- ID:{{articles[0].id}}<br>
+    Pid:{{articles[0].pid}}<br>
+    Email:{{articles[0].email}}<br> -->
+    Title:{{articles[0].title}}&nbsp;
+    Abstract:{{articles[0].abstract}}&nbsp;
+    Author:{{articles[0].author}}&nbsp;
+    Uper:<a href="/author/{{articles[0].authorid}}">{{articles[0].email}}</a>&nbsp;
+    UperID:{{articles[0].authorid}}&nbsp;
+    Visits:{{articles[0].visit}}&nbsp;
+    {%for subject in articles[0].subjects%}
+    Subject:{{subject}}
+    {%endfor%}&nbsp;
+
+    Date:{{articles[0].date}}<br>
+    Upvotes:{{articles[0].upvotes}}&nbsp;<a href="javascript:;" id="good">good</a>&nbsp;&nbsp;
+    Downvotes:{{articles[0].downvotes}}&nbsp;<a href="javascript:;" id="bad">bad</a><br>
+    Score:{{articles[0].score}}<br>
+    <!-- Show:{{articles[0].show}}<br> -->
+    Download:<a href="/download/{{articles[0].pid}}">{{articles[0].title}}.pdf</a><br>
+    <a href="/articles/{{articles[0].id}}">details</a>
+
+    <hr>
+    <form action="/submit/comments" method="POST">
+    Input Your Comment:<br>
+    <textarea rows="10" cols="30" maxlength="150" name="content"></textarea><br>
+    <input type="submit" value="上传评论" />
+    <input type="hidden" name="id" value="{{articles[0].id}}">
+    </form>
+    <hr>
+    {{comments|length}}&nbsp;comments<br>
+    {%for comment in comments%}<br>
+    {{comment.content}}<br>
+    {{comment.date}}<br>
+    {{comment.upvotes}}
+    {{comment.downvotes}}
+
+    {%endfor%}
+
+
+</body>
+<Script type="text/javascript">
+    
+    var goodBtn = document.getElementById('good')
+    goodBtn.addEventListener('click', function () {
+        var formData = new FormData()
+        formData.append('id', '{{articles[0].id}}')
+        fetch('/article/upvote', {
+            method: 'POST',
+            body: formData
+        }).then()
+    })
+
+    var goodBtn = document.getElementById('bad')
+    goodBtn.addEventListener('click', function () {
+        var formData = new FormData()
+        formData.append('id', '{{articles[0].id}}')
+        fetch('/article/downvote', {
+            method: 'POST',
+            body: formData
+        }).then()
+    })
+
+</Script>
