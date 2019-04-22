@@ -1,0 +1,26 @@
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>article details</title>
+</head>
+<body>
+<a href="/"><h3>Free Paper</h3></a>
+<h1>The subject details</h1>
+totaly {{articles|length}} articles <br>
+{%for article in articles%}<br>
+<!-- ID:{{article.id}}<br>
+Pid:{{article.pid}}<br>
+Email:{{article.email}}<br> -->
+Title:{{article.title}}<br>
+Abstract:{{article.abstract}}<br>
+Author:{{article.author}}<br>
+Date:{{article.date}}<br>
+Upvotes:{{article.upvotes}}<br>
+Downvotes:{{article.downvotes}}<br>
+Score:{{article.score}}<br>
+Visit:{{article.visit}}<br>
+<!-- Show:{{article.show}}<br> -->
+Download:<a href="/download/{{article.pid}}">{{article.title}}.pdf</a><br>
+<a href="/articles/{{article.id}}">details</a>
+<hr>
+{%endfor%}
+</body>
