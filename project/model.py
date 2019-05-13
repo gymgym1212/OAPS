@@ -4,7 +4,6 @@ import datetime
 import smtplib
 from email.mime.text import MIMEText
 import os
-assert 'SYSTEMROOT' in os.environ
 
 conn = sqlite.connect('Freepaper.db', check_same_thread=False)
 cursor = conn.cursor()
