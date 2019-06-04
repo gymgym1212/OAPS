@@ -15,7 +15,7 @@
 
 
     <input type="file" accept="application/pdf" name="file" onchange="fileChange(this)"/>
-    <input type="submit" value="上传文件" onclick="validate()"/>
+    <input type="submit" value="上传文件" onclick="return validate()"/>
     </form>
     <hr>
     <a href="/subject">subjects</a>
@@ -78,29 +78,29 @@
     }
 
     function validate() {
-        
-    var inputCode = document.getElementById("Verificationcode").value;
-    var email = document.getElementById("email").value;
-    var author = document.getElementById("author").value;
-    var title = document.getElementById("title").value;
-    var abstract = document.getElementById("abstract").value;
-    var subject = document.getElementById("subject").value;
+            
+        var inputCode = document.getElementById("Verificationcode").value;
+        var email = document.getElementById("email").value;
+        var author = document.getElementById("author").value;
+        var title = document.getElementById("title").value;
+        var abstract = document.getElementById("abstract").value;
+        var subject = document.getElementById("subject").value;
 
-    if(email == ''|| author == ''||title==''||abstract==''||subject==''){
-    alert("The information cannot be empty！");
-    return false;
-    }
-    else if (inputCode.length <= 0) {
-        alert("Please enter the verification code!");
-        return false;
-    }else if (inputCode != code) {
-        alert("Verification code input error!");
-        return false;
-    createCode();//刷新验证码   
-    } else {
-    alert("OK");
-    return true;
-    }
+        if(email == ''|| author == ''||title==''||abstract==''||subject==''){
+            alert("The information cannot be empty！");
+            return false;
+        }
+        else if (inputCode.length <= 0) {
+            alert("Please enter the verification code!");
+            return false;
+        }else if (inputCode != code) {
+            alert("Verification code input error!");
+            createCode();//刷新验证码   
+            return false;
+        } else {
+            alert("OK");
+            return true;
+        }
     
     }
     </Script>
